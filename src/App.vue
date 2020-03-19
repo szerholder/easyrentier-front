@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
+  <div id="app" class="container">
     
     
-    <div class="container kafelkiodlewej">
+    <div class="container kafelkiodlewej bg-secondary">
       <div> A </div>
       <div> B </div>
       <div> C </div>
@@ -13,18 +13,28 @@
     </div>
 
     <br>
-    <br>
-    <br>
 
-    <b-containter>
-      <b-row>
-        <b-col> A </b-col>
+    <b-containter class="bg-primary">
+      <b-row class="bg-warning">
+        <b-col class="bg-primary"> A </b-col>
         <b-col> B </b-col>
         <b-col> C </b-col>
         <b-col> D </b-col>
       </b-row>
    </b-containter>
 
+    <br>
+    <br>
+    <br>
+
+   <b-container class="bg-success">
+     <ul>
+      <li v-for="item in lista" v-bind:key="item">{{item}}</li>
+     </ul>
+   </b-container>
+   
+     
+  
 
 
   </div>
@@ -42,6 +52,13 @@
 export default {
   name: 'App',
   components: {
+
+  },
+  data(){
+    return{
+      lista: ["pierwszy","drugi","trzeci"]
+
+    }
 
   }
 }
