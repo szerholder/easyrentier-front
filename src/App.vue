@@ -29,7 +29,8 @@
       <option>Kraków</option>
       <option>Częstochowa</option>
       <option>Warszawa</option>
-      <option>Gdańsk </option>
+      <option>Katowice</option>
+      <option>Gdańsk</option>
     </select>
     </div>
 
