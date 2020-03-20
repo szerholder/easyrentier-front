@@ -45,6 +45,7 @@
       <div><button type="button" class="btn btn-primary">Złóż zlecenie</button></div>
     </div>
 
+    <chatbox />
 
   </div>
 </template>
@@ -54,11 +55,12 @@
 
 
 <script>
-
+import chatbox from './components/chatbot'
 
 export default {
   name: 'App',
   components: {
+    chatbox
   },
   data(){
     return{
