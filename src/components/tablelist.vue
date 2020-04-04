@@ -21,7 +21,7 @@
                 <td>{{surname}}</td>
                 <td>{{camera}}</td>
                 <td>{{position}}</td>
-                <td>{{regions}}</td>
+                <td>{{specialist[1].username}}</td>
             </tr>   
         </tbody>
     </table>  
@@ -39,7 +39,7 @@
 import axios from "axios";
 
 export default {
-    name: "InstructorApp",
+    name: "table",
     
     data(){
         return{
@@ -55,14 +55,19 @@ export default {
     methods:{
         zaciaganie_danych(){
             axios.get(`http://localhost:8080/instructors/In28Minutes/courses`)
-            .then( response=>{ this.id= response.data[1].username; this.name= response.data[1].description;  }
+            .then( response=>{ this.id = response.data[1].username; 
+                               this.name = response.data[1].description;
+                               this.specialist = response.data  }
     
-    )
+            )
             
 
         }
 
 
+    },
+    created(){
+        this.zaciaganie_danych();
     }
 }
 
