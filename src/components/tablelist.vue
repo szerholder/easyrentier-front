@@ -4,76 +4,111 @@
     <table class="table">
         <thead class="thead-light"> 
             <tr>
-                <th>ID</th>
-                <th>Imię</th>
-                <th>Nazwisko</th>
+                <th>Id</th>
                 <th>Kamera</th>
-                <th>Stanowisko</th>
-                <th>Regiony</th>
+                <th>Miasto</th>
+                <th>Opis</th>
             </tr>
         </thead>
 
 
         <tbody>    
-            <tr>
-                <td>{{id}}</td>
-                <td>{{name}}</td>
-                <td>{{surname}}</td>
-                <td>{{camera}}</td>
-                <td>{{position}}</td>
-                <td>{{specialist[1].username}}</td>
+            <tr v-for="element in orders" v-bind:key="element.id">
+                <td>{{element.id}}</td>
+                <td>{{element.camera}}</td>
+                <td>{{element.town}}</td>
+                <td>{{element.description}}</td>
             </tr>   
         </tbody>
     </table>  
 
-    <button v-on:click="zaciaganie_danych()">run axios</button>
+    <button v-on:click="zaciaganie_danych()">Odśwież</button>
+
+
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+            </div>
+           
+            <div class="col-sm">
+            </div>
+
+            <div class="col-sm">
+            </div>
+            
+            <div class="col-sm">
+            </div>
+
+            <div class="col-sm">
+            </div>
+    
+            <div class="col-sm">
+            </div>
+            
+            <div class="col-sm">
+            
+
+
+                <div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="podaj id" id="myInput" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+
+
+                    <div class="d-flex flex-row-reverse tab">
+                        <div><button type="button" class="btn btn-primary" v-on:click="deleteOrderById()">..Usuń..</button></div>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
 
     </div>
 </template>
 
 
-
-
-
 <script>
 import axios from "axios";
 
+
 export default {
-    name: "table",
+    name: "tablelist",
     
     data(){
         return{
-            id: "1",
-            name: "Jan",
-            surname: "Kowalski",
-            camera: "Flir",
-            position: "Inspektor",
-            regions: ["slaskie","malopolskie","śródziemie"],
-            specialist: [] //i moze wszystko w jednym
+            orders: [],
+            deleteIndex : null
         }
     },
     methods:{
         zaciaganie_danych(){
-            axios.get(`http://localhost:8080/instructors/In28Minutes/courses`)
-            .then( response=>{ this.id = response.data[1].username; 
-                               this.name = response.data[1].description;
-                               this.specialist = response.data  }
-    
+            axios.get(`http://localhost:8080/getallorders`)
+            .then( response=>{ 
+                this.orders = response.data
+                }
             )
-            
+        },
 
-        }
+        deleteOrderById(){
+            let a = document.getElementById("myInput").value;
+            axios.delete(`http://localhost:8080/`,{ params: { index: a }}).then(res => res.data);
+        }  
 
-
-    },
+    },  
     created(){
         this.zaciaganie_danych();
     }
 }
-
-
-
-
 
 
 </script>
