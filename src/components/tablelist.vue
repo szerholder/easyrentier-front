@@ -58,18 +58,15 @@
                     </div>
 
 
-                    <div class="d-flex flex-row-reverse tab">
+                    <div class="d-flex tab">
                         <div><button type="button" class="btn btn-primary" v-on:click="deleteOrderById()">..Usuń..</button></div>
                     </div>
                 </div>
 
 
-
-
-
-
-            </div>
+            </div> 
         </div>
+
     </div>
 
 

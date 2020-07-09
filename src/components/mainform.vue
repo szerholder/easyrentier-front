@@ -2,9 +2,9 @@
     <div>
 
         <div class="form-group">
-            <label for="exampleFormControlSelect1">Rezerwuj kamerę:</label>
+            <label for="FormControl1">Rezerwuj kamerę:</label>
             
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="FormControl1">
                 <option>FLIR E4 WIFI KAMERA TERMOWIZYJNA 80X60</option>
                 <option>FLIR C2 KAMERA TERMOWIZYJNA 80X60</option>
                 <option>SONEL KT-320 KAMERA TERMOWIZYJNA</option>
@@ -15,8 +15,8 @@
 
 
         <div class="form-group">
-            <label for="exampleFormControlSelect2">Wybierz miasto:</label>
-            <select class="form-control" id="exampleFormControlSelect2">
+            <label for="FormControl2">Wybierz miasto:</label>
+            <select class="form-control" id="FormControl2">
                 <option>Kraków</option>
                 <option>Częstochowa</option>
                 <option>Warszawa</option>
@@ -27,8 +27,8 @@
 
 
         <div class="form-group">
-            <label for="exampleFormControlTextarea1">Dodatkowe informacje:</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="TextArea1">Dodatkowe informacje:</label>
+            <textarea class="form-control" id="TextArea1" rows="3"></textarea>
         </div>
 
 
@@ -57,11 +57,11 @@ export default {
 
     methods:{
         makeOrder(){
-            var e = document.getElementById("exampleFormControlSelect1");
+            var e = document.getElementById("FormControl1");
             this.camera = e.options[e.selectedIndex].value;
-            var e2 = document.getElementById("exampleFormControlSelect2");
+            var e2 = document.getElementById("FormControl2");
             this.town = e2.options[e2.selectedIndex].value;
-            this.description = document.getElementById("exampleFormControlTextarea1").value;
+            this.description = document.getElementById("TextArea1").value;
 
             axios.post('http://localhost:8080/', { camera: this.camera, town: this.town, description: this.description} ).then(res=>{
                 console.log(res)
